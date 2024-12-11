@@ -103,5 +103,24 @@ namespace SudokuSolver {
       }
       return status;
     }
+
+    public override string ToString() {
+      var returnString = "";
+      var smallSquareSize = Math.Sqrt(size);
+
+      for (int row = 0; row < size; row++) {
+        for (int col = 0; col < size; col++) {
+          returnString += board[row, col].ToString() + " ";
+          if (col % smallSquareSize == smallSquareSize - 1 && col < size - 1) {
+            returnString += "|";
+          }
+        }
+        returnString += "\n";
+        if (row % smallSquareSize == smallSquareSize - 1 && row < size - 1) {
+          returnString += "".PadLeft(size * 2 + (int)Math.Sqrt(size) - 1, '-') + "\n";
+        }
+      }
+      return returnString;
+    }
   }
 }
